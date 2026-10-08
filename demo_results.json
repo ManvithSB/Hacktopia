@@ -1,0 +1,88 @@
+{
+  "SAFE": {
+    "interaction_id": "8039b3f2-1c29-4563-b65a-3771ca1a9d52",
+    "risk_level": "SAFE",
+    "score": 15,
+    "signals": [
+      "urgent_language"
+    ],
+    "reasons": [
+      "The message creates urgency and pressures you to act quickly."
+    ],
+    "recommendation": "PROCEED",
+    "coverage": {
+      "message": "checked",
+      "url": "not_provided",
+      "qr": "not_provided",
+      "payment": "checked"
+    }
+  },
+  "SUSPICIOUS": {
+    "interaction_id": "a1198ac4-5231-404a-bced-49688b867bf8",
+    "risk_level": "SUSPICIOUS",
+    "score": 40,
+    "signals": [
+      "kyc_pressure",
+      "account_threat"
+    ],
+    "reasons": [
+      "The message pressures you to complete or update KYC.",
+      "The message threatens account blocking or suspension."
+    ],
+    "recommendation": "VERIFY",
+    "coverage": {
+      "message": "checked",
+      "url": "not_provided",
+      "qr": "not_provided",
+      "payment": "not_provided"
+    }
+  },
+  "HIGH_RISK": {
+    "interaction_id": "775a641e-ea2a-45db-af6b-64cd7b3397cb",
+    "risk_level": "HIGH_RISK",
+    "score": 70,
+    "signals": [
+      "urgent_language",
+      "amount_mismatch",
+      "payee_mismatch",
+      "payment_context_mismatch"
+    ],
+    "reasons": [
+      "The message creates urgency and pressures you to act quickly.",
+      "The payment amount does not match the amount mentioned in the message.",
+      "The payment recipient does not match the recipient described in the message.",
+      "The payment request does not fully match the context described in the message."
+    ],
+    "recommendation": "STOP",
+    "coverage": {
+      "message": "checked",
+      "url": "not_provided",
+      "qr": "not_provided",
+      "payment": "checked"
+    }
+  },
+  "OCR_MULTILINGUAL": {
+    "interaction_id": "5777d294-0d9b-4eb8-842d-19b00c2a5650",
+    "risk_level": "SUSPICIOUS",
+    "score": 55,
+    "signals": [
+      "kyc_pressure",
+      "urgent_language",
+      "account_threat"
+    ],
+    "reasons": [
+      "यह संदेश KYC पूरा करने या अपडेट करने का दबाव बनाता है।",
+      "यह संदेश जल्दी कार्रवाई करने का दबाव बनाता है।",
+      "यह संदेश खाते को बंद या निलंबित करने की धमकी देता है।"
+    ],
+    "recommendation": "VERIFY",
+    "coverage": {
+      "message": "checked_via_ocr",
+      "url": "not_provided",
+      "qr": "not_provided",
+      "payment": "not_provided"
+    },
+    "input_source": "image",
+    "extracted_text": "URGENT your bank account will be blocked complete KYC now"
+  }
+}
