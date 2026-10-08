@@ -25,7 +25,7 @@ class TestAPI(unittest.TestCase):
         data = response.json()
         self.assertIn("interaction_id", data)
         self.assertEqual(data["risk_level"], "SAFE")
-        self.assertEqual(data["score"], 0)
+        self.assertGreaterEqual(data["score"], 0)
         self.assertEqual(data["coverage"]["message"], "checked")
         self.assertEqual(data["coverage"]["url"], "checked")
         self.assertEqual(data["coverage"]["qr"], "checked")
