@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, UploadFile, File, Form, HTTPException
 import uuid
 from backend.schemas import AnalyzeRequest, AnalyzeResponse
 
@@ -57,3 +57,64 @@ def analyze(request: AnalyzeRequest):
         recommendation=recommendation,
         coverage=coverage
     )
+
+@app.post("/analyze/image")
+async def analyze_image(
+    image: UploadFile = File(...),
+    language: str = Form("en")
+):
+    # Validate image format
+    allowed_types = ["image/png", "image/jpeg", "image/webp"]
+    if image.content_type not in allowed_types:
+        raise HTTPException(status_code=400, detail="Unsupported image format. Allowed formats: PNG, JPEG, WEBP.")
+    
+    # Read image bytes and size limit (10 MB)
+    MAX_SIZE = 10 * 1024 * 1024
+    image_bytes = await image.read()
+    if not image_bytes:
+        raise HTTPException(status_code=400, detail="Empty image uploaded.")
+    if len(image_bytes) > MAX_SIZE:
+        raise HTTPException(status_code=400, detail="Image is too large. Maximum allowed size is 10 MB.")
+    
+    # OCR processing
+    from backend.engine.ocr import extract_text_from_image
+    try:
+        extracted_text = extract_text_from_image(image_bytes, language)
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except RuntimeError as e:
+        raise HTTPException(status_code=503, detail=str(e))
+    except Exception:
+        raise HTTPException(status_code=500, detail="OCR processing failed.")
+    
+    # Run Message Shield on extracted text
+    from backend.engine.message_shield import analyze_message, map_score_to_risk
+    msg_result = analyze_message(extracted_text)
+    score = msg_result["score"]
+    signals = msg_result["signals"]
+    
+    # No payment context in this endpoint, so skip correlation
+    risk_level, recommendation = map_score_to_risk(score)
+    
+    # Multilingual explanations
+    from backend.engine.explanations import get_reason
+    reasons = [get_reason(sig, language) for sig in signals]
+    
+    coverage = {
+        "message": "checked_via_ocr",
+        "url": "not_provided",
+        "qr": "not_provided",
+        "payment": "not_provided"
+    }
+    
+    return {
+        "interaction_id": str(uuid.uuid4()),
+        "risk_level": risk_level,
+        "score": score,
+        "signals": signals,
+        "reasons": reasons,
+        "recommendation": recommendation,
+        "coverage": coverage,
+        "input_source": "image",
+        "extracted_text": extracted_text
+    }

@@ -1,0 +1,11 @@
+# ScamShield Backend — Python dependencies
+# Install with: pip install -r requirements.txt
+#
+# NOTE: Tesseract OCR system binary is also required for image analysis.
+# See: https://github.com/UB-Mannheim/tesseract/wiki
+
+fastapi
+pydantic
+httpx
+Pillow
+pytesseract
