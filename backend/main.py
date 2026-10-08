@@ -35,9 +35,12 @@ def analyze(request: AnalyzeRequest):
             corr_result = correlate_context(request.message, request.payee, request.amount)
             score += corr_result["correlation_score"]
             signals.extend(corr_result["correlation_signals"])
-            reasons.extend(corr_result["correlation_reasons"])
             
         risk_level, recommendation = map_score_to_risk(score)
+        
+        # Multilingual Explanation Layer
+        from backend.engine.explanations import get_reason
+        reasons = [get_reason(sig, request.language) for sig in signals]
     else:
         score = 0
         signals = []

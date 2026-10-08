@@ -9,6 +9,7 @@ class AnalyzeRequest(BaseModel):
     payee: Optional[str] = None
     amount: Optional[float] = Field(default=None, ge=0.0)
     currency: str = Field(default="INR")
+    language: str = Field(default="en")
 
     @model_validator(mode='after')
     def check_not_empty(self) -> 'AnalyzeRequest':
