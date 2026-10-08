@@ -81,5 +81,39 @@ class TestAPI(unittest.TestCase):
         data = response.json()
         self.assertIn("detail", data)
 
+    def test_end_to_end_correlation_mismatch(self):
+        payload = {
+            "message": "Your electricity bill is ₹850. Pay to ABC Electricity immediately.",
+            "payee": "Rahul Kumar",
+            "amount": 850,
+            "currency": "INR"
+        }
+        response = self.client.post("/analyze", json=payload)
+        self.assertEqual(response.status_code, 200)
+        data = response.json()
+        
+        # Message Shield gives +15 for 'immediately'
+        # payee_mismatch gives +25
+        # Total = 40 (SUSPICIOUS)
+        self.assertIn("payee_mismatch", data["signals"])
+        self.assertEqual(data["risk_level"], "SUSPICIOUS")
+        self.assertGreater(data["score"], 15)
+
+    def test_end_to_end_correlation_match(self):
+        payload = {
+            "message": "Your electricity bill is ₹850. Pay to ABC Electricity.",
+            "payee": "ABC Electricity",
+            "amount": 850,
+            "currency": "INR"
+        }
+        response = self.client.post("/analyze", json=payload)
+        self.assertEqual(response.status_code, 200)
+        data = response.json()
+        
+        self.assertNotIn("payee_mismatch", data["signals"])
+        self.assertNotIn("amount_mismatch", data["signals"])
+        self.assertEqual(data["risk_level"], "SAFE")
+        self.assertEqual(data["score"], 0)
+
 if __name__ == "__main__":
     unittest.main()

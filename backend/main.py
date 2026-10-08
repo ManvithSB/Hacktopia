@@ -19,13 +19,25 @@ def analyze(request: AnalyzeRequest):
 
     # Run Message Shield if message is provided
     if request.message:
-        from backend.engine.message_shield import analyze_message
+        from backend.engine.message_shield import analyze_message, map_score_to_risk
+        from backend.engine.correlation import correlate_context
+        
         msg_result = analyze_message(request.message)
+        
+        # Base Message Shield results
         score = msg_result["score"]
         signals = msg_result["signals"]
         reasons = msg_result["reasons"]
-        risk_level = msg_result["risk_level"]
-        recommendation = msg_result["recommendation"]
+        
+        # Context Correlation
+        # Only check payment mismatch if payment data is provided
+        if request.payee or request.amount is not None:
+            corr_result = correlate_context(request.message, request.payee, request.amount)
+            score += corr_result["correlation_score"]
+            signals.extend(corr_result["correlation_signals"])
+            reasons.extend(corr_result["correlation_reasons"])
+            
+        risk_level, recommendation = map_score_to_risk(score)
     else:
         score = 0
         signals = []
