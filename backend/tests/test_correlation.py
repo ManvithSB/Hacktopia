@@ -62,5 +62,24 @@ class TestCorrelation(unittest.TestCase):
         signals = result["correlation_signals"]
         self.assertNotIn("amount_mismatch", signals)
 
+    def test_implicit_context_mismatch(self):
+        # Scenario: bill payment vs unrelated person
+        msg = "Your electricity bill is ₹850. Pay immediately."
+        result = correlate_context(msg, "unrelated random person", 8500)
+        signals = result["correlation_signals"]
+        self.assertIn("amount_mismatch", signals)
+        self.assertIn("payee_mismatch", signals)
+        self.assertIn("payment_context_mismatch", signals)
+        self.assertGreaterEqual(result["correlation_score"], 55)
+
+    def test_implicit_context_match(self):
+        # Scenario: bill payment vs valid utility provider
+        msg = "Your electricity bill is ₹850. Pay immediately."
+        result = correlate_context(msg, "BESCOM Electricity", 850)
+        signals = result["correlation_signals"]
+        self.assertNotIn("amount_mismatch", signals)
+        self.assertNotIn("payee_mismatch", signals)
+        self.assertNotIn("payment_context_mismatch", signals)
+
 if __name__ == "__main__":
     unittest.main()

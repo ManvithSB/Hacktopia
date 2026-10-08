@@ -108,6 +108,18 @@ def extract_payees(message: str) -> List[str]:
         if candidate:
             candidates.append(candidate)
             
+    # Check for implicit context like "electricity bill", "water bill", "traffic fine", "lottery prize"
+    context_patterns = [
+        r'([a-zA-Z0-9]+)\s+(?:bill|fine|challan)\b',
+        r'(?:lottery|prize|kyc|bank)'
+    ]
+    for pat in context_patterns:
+        for match in re.finditer(pat, message, flags=re.IGNORECASE):
+            # If it's the group pattern, use group(1), else the whole match
+            candidate = match.group(1).strip() if match.groups() else match.group(0).strip()
+            if candidate.lower() not in ignore_words:
+                candidates.append(candidate)
+                
     return candidates
 
 def check_amount_mismatch(message_amounts: List[float], request_amount: Optional[float]) -> bool:

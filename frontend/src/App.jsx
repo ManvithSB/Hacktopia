@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-import { analyzePayment } from './services/api'
+import { analyzePayment, analyzeImage } from './services/api'
 
 const translations = {
   en: {
@@ -379,71 +379,6 @@ function App() {
     }, 100)
   }
 
-  const localizeReason = (reason) => {
-    const text = String(reason || '').toLowerCase()
-
-    if (
-      text.includes('amount') ||
-      text.includes('850') ||
-      text.includes('8,500')
-    ) {
-      if (language === 'kn') {
-        return 'ಸಂದೇಶದಲ್ಲಿ ₹850 ಕೇಳಲಾಗಿದೆ, ಆದರೆ ಪಾವತಿ ಮೊತ್ತ ₹8,500 ಆಗಿದೆ.'
-      }
-
-      if (language === 'hi') {
-        return 'संदेश में ₹850 मांगे गए हैं, लेकिन भुगतान राशि ₹8,500 है।'
-      }
-
-      return 'The message asks for ₹850, but the payment amount is ₹8,500.'
-    }
-
-    if (
-      text.includes('payee') ||
-      text.includes('rahul') ||
-      text.includes('electricity')
-    ) {
-      if (language === 'kn') {
-        return 'ವಿದ್ಯುತ್ ಬಿಲ್‌ಗಾಗಿ ಹೇಳಲಾಗಿದೆ, ಆದರೆ ಹಣ Rahul Kumar ಅವರಿಗೆ ಹೋಗುತ್ತಿದೆ.'
-      }
-
-      if (language === 'hi') {
-        return 'संदेश बिजली बिल के बारे में है, लेकिन भुगतान Rahul Kumar को जा रहा है।'
-      }
-
-      return 'The message is about an electricity bill, but the payment is going to Rahul Kumar.'
-    }
-
-    if (
-      text.includes('url') ||
-      text.includes('link') ||
-      text.includes('destination')
-    ) {
-      if (language === 'kn') {
-        return 'ಪಾವತಿ ಲಿಂಕ್ ಅಧಿಕೃತ ವಿದ್ಯುತ್ ಪೂರೈಕೆದಾರರನ್ನು ಸ್ಪಷ್ಟವಾಗಿ ಗುರುತಿಸುವುದಿಲ್ಲ.'
-      }
-
-      if (language === 'hi') {
-        return 'भुगतान लिंक आधिकारिक बिजली प्रदाता की पहचान स्पष्ट रूप से नहीं करता।'
-      }
-
-      return 'The payment link does not clearly identify the official electricity provider.'
-    }
-
-    if (text.includes('urgent') || text.includes('pressure')) {
-      if (language === 'kn') {
-        return 'ತಕ್ಷಣ ಪಾವತಿಸಲು ಒತ್ತಡ ಹೇರುವ ತುರ್ತು ಭಾಷೆಯನ್ನು ಬಳಸಲಾಗಿದೆ.'
-      }
-
-      if (language === 'hi') {
-        return 'तुरंत भुगतान करवाने के लिए दबाव वाली भाषा का उपयोग किया गया है।'
-      }
-
-      return 'Urgent language is being used to pressure you into making a payment.'
-    }
-
-    return reason
-  }
 
   const getRiskInfo = () => {
     const risk = result?.risk_level
@@ -475,32 +410,33 @@ function App() {
   }
 
   const handleAnalyze = async () => {
-    if (inputType === 'screenshot') {
-      alert(t.screenshotSoon)
-      return
-    }
-
     setLoading(true)
     setResult(null)
 
-    const requestData = {
-      message,
-      url,
-      qr_payload: null,
-      payee,
-      amount: Number(amount) || 0,
-      currency: 'INR',
-    }
-
     try {
-      const data = await analyzePayment(requestData)
-      setResult(data)
-    } catch (error) {
-      if (payee === 'Rahul Kumar' && Number(amount) === 8500) {
-        setResult(createDemoResult())
+      if (inputType === 'screenshot') {
+        if (!screenshot) {
+          alert('Please upload a screenshot first.')
+          setLoading(false)
+          return
+        }
+        const data = await analyzeImage(screenshot, language)
+        setResult(data)
       } else {
-        alert(t.backendError)
+        const requestData = {
+          message,
+          url,
+          qr_payload: null,
+          payee,
+          amount: Number(amount) || 0,
+          currency: 'INR',
+          language,
+        }
+        const data = await analyzePayment(requestData)
+        setResult(data)
       }
+    } catch (error) {
+      alert(t.backendError)
     } finally {
       setLoading(false)
     }
@@ -1002,7 +938,7 @@ function App() {
                             {String(index + 1).padStart(2, '0')}
                           </span>
 
-                          <p>{localizeReason(reason)}</p>
+                          <p>{reason}</p>
                         </div>
                       ))
                     ) : (

@@ -21,6 +21,16 @@ _tesseract_available = True
 _skip_reason = ""
 try:
     import pytesseract
+    if os.name == 'nt':
+        common_paths = [
+            r'C:\Program Files\Tesseract-OCR\tesseract.exe',
+            r'C:\Program Files (x86)\Tesseract-OCR\tesseract.exe',
+            r'C:\Users\JATHAN\AppData\Local\Tesseract-OCR\tesseract.exe'
+        ]
+        for path in common_paths:
+            if os.path.exists(path):
+                pytesseract.pytesseract.tesseract_cmd = path
+                break
     pytesseract.get_tesseract_version()
 except Exception as exc:
     _tesseract_available = False
@@ -57,7 +67,7 @@ def _get_font(size: int = 40):
     return ImageFont.load_default()
 
 
-def create_image_with_text(text: str, fmt: str = "PNG", size=(800, 200)) -> bytes:
+def create_image_with_text(text: str, fmt: str = "PNG", size=(1200, 200)) -> bytes:
     """Create an image with the given text rendered as pixels.
 
     Args:

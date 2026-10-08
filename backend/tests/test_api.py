@@ -16,7 +16,7 @@ class TestAPI(unittest.TestCase):
             "message": "Your electricity bill is overdue. Pay rs 850 immediately.",
             "url": "https://example.com",
             "qr_payload": "some_qr_data",
-            "payee": "ABC Utilities",
+            "payee": "ABC Electricity",
             "amount": 850.0,
             "currency": "INR"
         }

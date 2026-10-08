@@ -1,8 +1,16 @@
 from fastapi import FastAPI, UploadFile, File, Form, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 import uuid
 from backend.schemas import AnalyzeRequest, AnalyzeResponse
 
 app = FastAPI(title="ScamShield Backend", description="Hackatopia 2K26 FT-01")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],
+    allow_methods=["POST", "GET", "OPTIONS"],
+    allow_headers=["*"],
+)
 
 @app.get("/health")
 def health_check():

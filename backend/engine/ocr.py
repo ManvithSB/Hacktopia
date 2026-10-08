@@ -13,6 +13,19 @@ from typing import Optional
 
 import pytesseract
 from PIL import Image
+import os
+
+# Configure Tesseract path for Windows if not in PATH
+if os.name == 'nt':
+    common_paths = [
+        r'C:\Program Files\Tesseract-OCR\tesseract.exe',
+        r'C:\Program Files (x86)\Tesseract-OCR\tesseract.exe',
+        r'C:\Users\JATHAN\AppData\Local\Tesseract-OCR\tesseract.exe'
+    ]
+    for path in common_paths:
+        if os.path.exists(path):
+            pytesseract.pytesseract.tesseract_cmd = path
+            break
 
 # Supported image MIME types
 SUPPORTED_TYPES = {
