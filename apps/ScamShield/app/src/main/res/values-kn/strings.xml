@@ -1,0 +1,112 @@
+<resources>
+    <string name="app_name">ScamShield</string>
+
+    <!-- Main Dashboard -->
+    <string name="status_title">ಡೆಮೊ ರಕ್ಷಣೆ ಸಕ್ರಿಯವಾಗಿದೆ</string>
+    <string name="status_subtitle">ಎಲ್ಲಾ ಸಿಸ್ಟಮ್‌ಗಳು ಸಾಮಾನ್ಯವಾಗಿ ಮೇಲ್ವಿಚಾರಣೆ ಮಾಡುತ್ತಿವೆ.</string>
+    <string name="input_hint">ಅನುಮಾನಾಸ್ಪದ ಸಂದೇಶವನ್ನು ನಮೂದಿಸಿ...</string>
+    <string name="btn_analyze">ಸಂದೇಶವನ್ನು ವಿಶ್ಲೇಷಿಸಿ</string>
+    <string name="btn_analyze_empty">ಮೇಲೆ ಸಂದೇಶವನ್ನು ನಮೂದಿಸಿ</string>
+
+    <!-- Samples -->
+    <string name="sample_label">ಮಾದರಿಯನ್ನು ಪ್ರಯತ್ನಿಸಿ:</string>
+    <string name="sample_safe">ಸುರಕ್ಷಿತ</string>
+    <string name="sample_suspicious">ಅನುಮಾನಾಸ್ಪದ</string>
+    <string name="sample_high_risk">ಹೆಚ್ಚಿನ ಅಪಾಯ</string>
+    
+    <string name="sample_text_safe">ನೀವು ಇಂದು ರಾತ್ರಿ ಊಟಕ್ಕೆ ಬರುತ್ತಿದ್ದೀರಾ?</string>
+    <string name="sample_text_suspicious">ನಿಮ್ಮ ಖಾತೆಯನ್ನು ತಾತ್ಕಾಲಿಕವಾಗಿ ನಿರ್ಬಂಧಿಸಲಾಗಿದೆ. ದಯವಿಟ್ಟು http://verify-secure-login.com ನಲ್ಲಿ ತಕ್ಷಣವೇ ನಿಮ್ಮ ವಿವರಗಳನ್ನು ನವೀಕರಿಸಿ</string>
+    <string name="sample_text_high_risk">ತುರ್ತು: ಅಸಾಮಾನ್ಯ ಚಟುವಟಿಕೆಯಿಂದಾಗಿ ನಿಮ್ಮ ಬ್ಯಾಂಕ್ ಖಾತೆಯನ್ನು ಲಾಕ್ ಮಾಡಲಾಗಿದೆ. ಪ್ರವೇಶವನ್ನು ಮರುಸ್ಥಾಪಿಸಲು ತಕ್ಷಣ 1-800-FAKE-BANK ಗೆ ಕರೆ ಮಾಡಿ.</string>
+
+    <!-- Results -->
+    <string name="results_title">ವಿಶ್ಲೇಷಣೆ ಫಲಿತಾಂಶಗಳು</string>
+    <string name="results_risk_level">ಅಪಾಯದ ಮಟ್ಟ</string>
+    <string name="results_score">ಸ್ಕೋರ್</string>
+    <string name="results_reasons">ಕಾರಣಗಳು</string>
+    <string name="results_recommendation">ಶಿಫಾರಸು</string>
+    <string name="results_analyzing">ವಿಶ್ಲೇಷಿಸಲಾಗುತ್ತಿದೆ...</string>
+
+    <!-- Legend -->
+    <string name="legend_safe">0  ಸುರಕ್ಷಿತ</string>
+    <string name="legend_suspicious">30  ಅನುಮಾನಾಸ್ಪದ</string>
+    <string name="legend_high_risk">60  ಹೆಚ್ಚಿನ ಅಪಾಯ</string>
+
+    <!-- Auto SMS Protection Section -->
+    <string name="sms_section_title">ಸ್ವಯಂಚಾಲಿತ SMS ರಕ್ಷಣೆ</string>
+    <string name="sms_section_subtitle">ಸ್ಕ್ಯಾಮ್ ಮಾದರಿಗಳಿಗಾಗಿ SMS ಅಧಿಸೂಚನೆಗಳನ್ನು ವೀಕ್ಷಿಸುತ್ತದೆ</string>
+    <string name="sms_disclaimer">ಸ್ಥಳೀಯ ಮಾದರಿ — Google Play Store ವಿತರಣೆಗೆ ಅರ್ಹವಲ್ಲ. ಬಳಕೆದಾರರು ನೀಡಿದ ಅಧಿಸೂಚನೆ ಪ್ರವೇಶದ ಅಗತ್ಯವಿದೆ. ಯಾವುದೇ RECEIVE_SMS ಅನುಮತಿಯನ್ನು ಬಳಸಲಾಗಿಲ್ಲ.</string>
+    <string name="sms_info_scope">ಸಕ್ರಿಯಗೊಳಿಸಿದಾಗ, ScamShield ನಿಮ್ಮ ಡೀಫಾಲ್ಟ್ SMS ಅಪ್ಲಿಕೇಶನ್‌ನಿಂದ ಮಾತ್ರ ಅಧಿಸೂಚನೆಗಳನ್ನು ಮೇಲ್ವಿಚಾರಣೆ ಮಾಡುತ್ತದೆ. WhatsApp, Telegram ಮತ್ತು ಇತರ ಅಪ್ಲಿಕೇಶನ್‌ಗಳನ್ನು ಎಂದಿಗೂ ಸ್ಕ್ಯಾನ್ ಮಾಡುವುದಿಲ್ಲ.</string>
+    <string name="sms_info_privacy">ನಿಮ್ಮ ಅಧಿಸೂಚನೆ ಪಟ್ಟಿಯಲ್ಲಿ ಗೋಚರಿಸುವ ಸಣ್ಣ ಪೂರ್ವವೀಕ್ಷಣೆಯನ್ನು ಮಾತ್ರ ನಿಮ್ಮ ಸ್ವಂತ ಕಂಪ್ಯೂಟರ್‌ನಲ್ಲಿ ಚಾಲನೆಯಲ್ಲಿರುವ ScamShield ಬ್ಯಾಕೆಂಡ್‌ಗೆ ಕಳುಹಿಸಲಾಗುತ್ತದೆ. ಯಾವುದೇ ಸಂದೇಶದ ವಿಷಯ, ಫೋನ್ ಸಂಖ್ಯೆಗಳು ಅಥವಾ OTP ಗಳನ್ನು ಸಾಧನದಲ್ಲಿ ಸಂಗ್ರಹಿಸಲಾಗುವುದಿಲ್ಲ.</string>
+    <string name="sms_perm_listener">ಅಧಿಸೂಚನೆ ಪ್ರವೇಶ</string>
+    <string name="sms_perm_post">ಅಧಿಸೂಚನೆಗಳನ್ನು ಕಳುಹಿಸಿ (ಎಚ್ಚರಿಕೆಗಳು)</string>
+    <string name="sms_perm_granted">ನೀಡಲಾಗಿದೆ</string>
+    <string name="sms_perm_not_granted">ನೀಡಿಲ್ಲ</string>
+    <string name="sms_btn_settings">ಅಧಿಸೂಚನೆ ಪ್ರವೇಶ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ತೆರೆಯಿರಿ</string>
+    <string name="sms_settings_hint">ಮೇಲಿನ ಬಟನ್ ಟ್ಯಾಪ್ ಮಾಡಿ, ಪಟ್ಟಿಯಲ್ಲಿ ScamShield ಅನ್ನು ಹುಡುಕಿ ಮತ್ತು ಅದನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ. ನಂತರ ಈ ಪರದೆಗೆ ಹಿಂತಿರುಗಿ.</string>
+    <string name="sms_disabled_msg">ಟಾಗಲ್ ಆಫ್ ಆಗಿದೆ — ಯಾವುದೇ SMS ಅಧಿಸೂಚನೆಗಳನ್ನು ವಿಶ್ಲೇಷಿಸಲಾಗುವುದಿಲ್ಲ.</string>
+
+    <!-- Permission Dialog -->
+    <string name="perm_dialog_title">ಅಧಿಸೂಚನೆಗಳನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ</string>
+    <string name="perm_dialog_desc">ಸ್ಕ್ಯಾಮ್ SMS ಪತ್ತೆಯಾದಾಗ ಎಚ್ಚರಿಕೆಗಳನ್ನು ತೋರಿಸಲು ScamShield ಗೆ ಅನುಮತಿಯ ಅಗತ್ಯವಿದೆ.</string>
+    <string name="perm_dialog_not_now">ಈಗ ಬೇಡ</string>
+    <string name="perm_dialog_allow">ಅನುಮತಿಸಿ</string>
+
+    <!-- Notifications -->
+    <string name="notif_title_high_risk">ScamShield: ಹೆಚ್ಚಿನ ಅಪಾಯ ಪತ್ತೆಯಾಗಿದೆ</string>
+    <string name="notif_title_suspicious">ScamShield: ಅನುಮಾನಾಸ್ಪದ ಸಂದೇಶ</string>
+    <string name="notif_reason">ಕಾರಣ: %1$s</string>
+    <string name="notif_score">ಸ್ಕೋರ್: %1$d</string>
+    
+    <string name="no_reason_provided">ಯಾವುದೇ ಕಾರಣವನ್ನು ಒದಗಿಸಲಾಗಿಲ್ಲ.</string>
+
+    <string name="app_subtitle">AI-ಚಾಲಿತ ಸ್ಕ್ಯಾಮ್ ಪತ್ತೆ</string>
+    <string name="status_active">ರಕ್ಷಣೆ ಸಕ್ರಿಯವಾಗಿದೆ</string>
+    <string name="status_connected">ScamShield ಬ್ಯಾಕೆಂಡ್‌ಗೆ ಸಂಪರ್ಕಿಸಲಾಗಿದೆ • ಪೋರ್ಟ್ 8000</string>
+    <string name="section_recent_scans">ಇತ್ತೀಚಿನ ಸ್ಕ್ಯಾನ್‌ಗಳು</string>
+    <string name="section_auto_protection">ಸ್ವಯಂಚಾಲಿತ ರಕ್ಷಣೆ</string>
+    <string name="section_analyze">ಸಂದೇಶವನ್ನು ವಿಶ್ಲೇಷಿಸಿ</string>
+
+    <!-- Result Card Labels -->
+    <string name="result_empty_title">ಇನ್ನು ವಿಶ್ಲೇಷಣೆ ಇಲ್ಲ</string>
+    <string name="result_empty_hint">ಮೇಲೆ ಸಂದೇಶವನ್ನು ಅಂಟಿಸಿ ವಿಶ್ಲೇಷಿಸಿ ಬಟನ್ ಟ್ಯಾಪ್ ಮಾಡಿ.\nಫಲಿತಾಂಶಗಳು ScamShield ಬ್ಯಾಕೆಂಡ್‌ನಿಂದ ಬರುತ್ತವೆ.</string>
+    <string name="loading_sending">ಬ್ಯಾಕೆಂಡ್‌ಗೆ ಕಳುಹಿಸಲಾಗುತ್ತಿದೆ\u2026</string>
+    <string name="loading_awaiting">POST /analyze \u2192 localhost:8000\nScamShield ಪ್ರತಿಕ್ರಿಯೆಗಾಗಿ ಕಾಯಲಾಗುತ್ತಿದೆ\u2026</string>
+    <string name="error_backend_title">ಬ್ಯಾಕೆಂಡ್ ಲಭ್ಯವಾಗಿಲ್ಲ</string>
+    <string name="error_backend_hint">ಬ್ಯಾಕೆಂಡ್ ಅನ್ನು ಇಬ್ಬಂತು ಪ್ರಾರಂಭಿಸಿ:</string>
+    <string name="result_why_flagged">\u2139\uFE0F  ಇದನ್ನು ಏಕೆ ಫ್ಲ್ಯಾಗ್ ಮಾಡಲಾಯಿತು</string>
+    <string name="result_signals_label">ಸಂಕೇತಗಳು:</string>
+    <string name="result_recommended_action">ಶಿಫಾರಸು ಮಾಡಿದ ಕ್ರಮ</string>
+    <string name="result_risk_score">ಅಪಾಯ ಸ್ಕೋರ್</string>
+
+    <!-- Risk Categories -->
+    <string name="risk_safe">ಸುರಕ್ಷಿತ</string>
+    <string name="risk_suspicious">ಅನುಮಾನಾಸ್ಪದ</string>
+    <string name="risk_high_risk">ಹೆಚ್ಚಿನ ಅಪಾಯ</string>
+
+    <!-- Recommendations -->
+    <string name="rec_stop">ತೊಡಗಿಸಿಕೊಳ್ಳಬೇಡಿ. ಪ್ರೇಷಕರನ್ನು ಬ್ಲಾಕ್ ಮಾಡಿ ತಕ್ಷಣ ಫಿಶಿಂಗ್ ಎಂದು ವರದಿ ಮಾಡಿ.</string>
+    <string name="rec_verify">ಎಚ್ಚರಿಕೆಯಿಂದ ಮುಂದುವರಿ. ಕ್ರಮ ತೆಗೆದುಕೊಳ್ಳುವ ಮುನ್ನ ಅಧಿಕೃತ ಮಾರ್ಗದ ಮೂಲಕ ಪ್ರೇಷಕರನ್ನು ಯಾಚಿಸಿ.</string>
+    <string name="rec_proceed">ಈ ಸಂದೇಶ ಸುರಕ್ಷಿತವಾಗಿ ಕಾಣುತ್ತದೆ. ಅನಿರೀಕ್ಷಿತ ವಿನಂತಿಗಳ ಬಗ್ಗೆ ಎಚ್ಚರಿಕೆಯಿಂದ ಇರಿ.</string>
+
+    <!-- Detection Reasons -->
+    <string name="reason_urgent_language">ಸಂದೇಶವು ತುರ್ತುವನ್ನು ಸೃಷ್ಟಿಸುತ್ತದೆ ಮತ್ತು ತಕ್ಷಣ ಕಾರ್ಯ ಮಾಡಲು ಮಗ್ಗಿ ಹಾಕುತ್ತದೆ.</string>
+    <string name="reason_account_threat">ಸಂದೇಶವು ಖಾತೆ ನಿರ್ಬಂಧ ಅಥವಾ ನಿಲಗಡೆಯ ಬೆದರಿಕೆ ಯೊಡ್ಡಿದೆ.</string>
+    <string name="reason_kyc_pressure">ಸಂದೇಶವು KYC ಪೂರ್ಣಗೊಳಿಸಲು ಅಥವಾ ನವೀಕರಿಸಲು ಮಗ್ಗಿ ಹಾಕುತ್ತದೆ.</string>
+    <string name="reason_impersonation">ಸಂದೇಶವು ಅಧಿಕಾರಿ, ಬ್ಯಾಂಕ್ ಅಥವಾ ಅಧಿಕೃತ ಸೇವೆಯನ್ನು ನಟಿಸುತ್ತಿರುವಂತೆ ಕಾಣುತ್ತದೆ.</string>
+    <string name="reason_credential_request">ಸಂದೇಶವು OTP, PIN ಅಥವಾ ಕಾರ್ಡ್ ವಿವರಗಳಂತಹ ಸಂವೇದನಶೀಲ ಮಾಹಿತಿಯನ್ನು ಕೇಳುತ್ತದೆ.</string>
+    <string name="reason_payment_pressure">ಸಂದೇಶವು ಪಾವತಿ ಮಾಡಲು ಅಥವಾ ಹಟ್ಟ ವರ್ಗಾಯಿಸಲು ಮಗ್ಗಿ ಹಾಕುತ್ತದೆ.</string>
+    <string name="reason_suspicious_intent">ಸಂದೇಶವು ಹಂಡಾಣಿಕೆ ಕ್ರಮವನ್ನು ಯಾಚನೆ, ಅನ್ಲಾಕ್, ಮರುಪಾವತಿ ಅಥವಾ ಬಹುಮಾನದೊಂದಿಗೆ ಜೋಡಿಸುತ್ತದೆ.</string>
+    <string name="reason_lottery_prize">ಸಂದೇಶವು ಬಹುಮಾನ ಅಥವಾ ಲಾಟರಿಯನ್ನು ಸೂಚಿಸುವ ಭಾಷೆ ಬಳಸುತ್ತದೆ ಇದು ಸಾಮಾನ್ಯವಾಗಿ ವಂಚನೆಗಳೊಂದಿಗೆ ಸಂಬಂಧಿಸಿದೆ.</string>
+    <string name="reason_refund_reward">ಸಂದೇಶವು ಕ್ರಮ ತೆಗೆದುಕೊಳ್ಳಲು ಪ್ರೋತ್ಸಾಹಿಸಲು ಮರುಪಾವತಿ, ಕ್ಯಾಶ್ಬ್ಯಾಕ್ ಅಥವಾ ಬಹುಮಾನದ ಮೂಲಕ ಗಮನ ಹೆಳುತ್ತದೆ.</string>
+
+    <!-- Signal Chip Labels -->
+    <string name="signal_urgent_language">ತುರ್ತುವಿನ ಭಾಷೆ</string>
+    <string name="signal_account_threat">ಖಾತೆ ಅಪಾಯ</string>
+    <string name="signal_kyc_pressure">KYC ಒತ್ತಡ</string>
+    <string name="signal_impersonation">ಹಕ್ಕು ಬದಲಾಯಿಸುವಿಕೆ</string>
+    <string name="signal_credential_request">ಗುರುತಿನ ವಿನಂತಿ</string>
+    <string name="signal_payment_pressure">ಪಾವತಿ ಒತ್ತಡ</string>
+    <string name="signal_suspicious_intent">ಅನುಮಾನಾಸ್ಪದ ಉದ್ದೇಶ</string>
+    <string name="signal_lottery_prize">ಲಾಟರಿ / ಬಹುಮಾನ</string>
+    <string name="signal_refund_reward">ಮರುಪಾವತಿ / ಬಹುಮಾನ</string>
+</resources>

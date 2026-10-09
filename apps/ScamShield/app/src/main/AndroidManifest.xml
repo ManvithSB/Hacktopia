@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- ── Network ────────────────────────────────────────────────────────── -->
+    <!-- Required for HTTP calls to the local FastAPI backend -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- ── Notifications ──────────────────────────────────────────────────── -->
+    <!-- Required on Android 13+ (API 33) to post ScamShield warning alerts.  -->
+    <!-- This is requested at runtime in MainActivity for API 33+.             -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!--
+        NOTE: READ_SMS, RECEIVE_SMS, and BIND_NOTIFICATION_LISTENER_SERVICE
+        are intentionally NOT declared as <uses-permission> elements because:
+          - READ_SMS / RECEIVE_SMS are restricted and not used by this prototype.
+          - BIND_NOTIFICATION_LISTENER_SERVICE is a service-level permission
+            applied directly on the <service> tag below, not a uses-permission.
+    -->
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ScamSheild"
+        android:usesCleartextTraffic="true">
+
+        <!-- Main dashboard activity -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.ScamSheild"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--
+            Automatic SMS Protection — NotificationListenerService
+            ────────────────────────────────────────────────────────────────────
+            PROTOTYPE — local hackathon demo only.
+            This service requires the user to manually grant "Notification Access"
+            in Android Settings (Settings > Apps > Special app access >
+            Notification access > ScamShield).
+
+            Google Play policy: distributing an app that uses
+            NotificationListenerService for SMS scam-warning purposes without
+            being the default SMS handler requires explicit Play policy review.
+            Do NOT submit this to the Play Store without verifying eligibility.
+
+            The service is NOT exported to other apps (exported=false).
+            The android:permission attribute ensures only the system can bind it.
+        -->
+        <service
+            android:name=".SmsNotificationListenerService"
+            android:exported="false"
+            android:label="ScamShield SMS Protection"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+        </service>
+
+    </application>
+
+</manifest>

@@ -1,0 +1,112 @@
+<resources>
+    <string name="app_name">ScamShield</string>
+
+    <!-- Main Dashboard -->
+    <string name="status_title">डेमो सुरक्षा सक्रिय</string>
+    <string name="status_subtitle">सभी सिस्टम सामान्य रूप से काम कर रहे हैं।</string>
+    <string name="input_hint">संदिग्ध संदेश दर्ज करें...</string>
+    <string name="btn_analyze">संदेश का विश्लेषण करें</string>
+    <string name="btn_analyze_empty">ऊपर एक संदेश दर्ज करें</string>
+
+    <!-- Samples -->
+    <string name="sample_label">नमूना आज़माएं:</string>
+    <string name="sample_safe">सुरक्षित</string>
+    <string name="sample_suspicious">संदिग्ध</string>
+    <string name="sample_high_risk">उच्च जोखिम</string>
+    
+    <string name="sample_text_safe">क्या आप आज रात खाने पर आ रहे हैं?</string>
+    <string name="sample_text_suspicious">आपका खाता अस्थायी रूप से प्रतिबंधित कर दिया गया है। कृपया तुरंत अपनी जानकारी http://verify-secure-login.com पर अपडेट करें</string>
+    <string name="sample_text_high_risk">जरूरी: असामान्य गतिविधि के कारण आपका बैंक खाता लॉक हो गया है। एक्सेस बहाल करने के लिए तुरंत 1-800-FAKE-BANK पर कॉल करें।</string>
+
+    <!-- Results -->
+    <string name="results_title">विश्लेषण परिणाम</string>
+    <string name="results_risk_level">जोखिम स्तर</string>
+    <string name="results_score">स्कोर</string>
+    <string name="results_reasons">कारण</string>
+    <string name="results_recommendation">सुझाव</string>
+    <string name="results_analyzing">विश्लेषण हो रहा है...</string>
+
+    <!-- Legend -->
+    <string name="legend_safe">0  सुरक्षित</string>
+    <string name="legend_suspicious">30  संदिग्ध</string>
+    <string name="legend_high_risk">60  उच्च जोखिम</string>
+
+    <!-- Auto SMS Protection Section -->
+    <string name="sms_section_title">ऑटो एसएमएस सुरक्षा</string>
+    <string name="sms_section_subtitle">स्कैम पैटर्न के लिए एसएमएस सूचनाओं पर नज़र रखता है</string>
+    <string name="sms_disclaimer">स्थानीय प्रोटोटाइप — गूगल प्ले स्टोर पर वितरण के योग्य नहीं। उपयोगकर्ता द्वारा दी गई अधिसूचना एक्सेस की आवश्यकता है। कोई RECEIVE_SMS अनुमति का उपयोग नहीं किया गया है।</string>
+    <string name="sms_info_scope">सक्षम होने पर, ScamShield केवल आपके डिफ़ॉल्ट एसएमएस ऐप से सूचनाओं की निगरानी करता है। व्हाट्सएप, टेलीग्राम और अन्य ऐप्स कभी स्कैन नहीं किए जाते हैं।</string>
+    <string name="sms_info_privacy">केवल आपके नोटिफिकेशन बार में दिखाई देने वाला छोटा प्रीव्यू आपके अपने कंप्यूटर पर चल रहे ScamShield बैकएंड को भेजा जाता है। डिवाइस पर कोई संदेश सामग्री, फ़ोन नंबर या ओटीपी संग्रहीत नहीं किया जाता है।</string>
+    <string name="sms_perm_listener">अधिसूचना एक्सेस</string>
+    <string name="sms_perm_post">सूचनाएं भेजें (चेतावनी)</string>
+    <string name="sms_perm_granted">स्वीकृत</string>
+    <string name="sms_perm_not_granted">अस्वीकृत</string>
+    <string name="sms_btn_settings">अधिसूचना एक्सेस सेटिंग्स खोलें</string>
+    <string name="sms_settings_hint">ऊपर दिए गए बटन पर टैप करें, सूची में ScamShield खोजें, और इसे सक्षम करें। फिर इस स्क्रीन पर वापस आएं।</string>
+    <string name="sms_disabled_msg">टॉगल बंद है — किसी भी एसएमएस अधिसूचना का विश्लेषण नहीं किया जाएगा।</string>
+
+    <!-- Permission Dialog -->
+    <string name="perm_dialog_title">सूचनाएं सक्षम करें</string>
+    <string name="perm_dialog_desc">स्कैम एसएमएस का पता चलने पर चेतावनी अलर्ट दिखाने के लिए ScamShield को अनुमति की आवश्यकता है।</string>
+    <string name="perm_dialog_not_now">अभी नहीं</string>
+    <string name="perm_dialog_allow">अनुमति दें</string>
+
+    <!-- Notifications -->
+    <string name="notif_title_high_risk">ScamShield: उच्च जोखिम पाया गया</string>
+    <string name="notif_title_suspicious">ScamShield: संदिग्ध संदेश</string>
+    <string name="notif_reason">कारण: %1$s</string>
+    <string name="notif_score">स्कोर: %1$d</string>
+    
+    <string name="no_reason_provided">कोई कारण नहीं बताया गया।</string>
+
+    <string name="app_subtitle">एआई-संचालित स्कैम डिटेक्शन</string>
+    <string name="status_active">सुरक्षा सक्रिय</string>
+    <string name="status_connected">ScamShield बैकएंड से जुड़ा • पोर्ट 8000</string>
+    <string name="section_recent_scans">हाल के स्कैन</string>
+    <string name="section_auto_protection">स्वचालित सुरक्षा</string>
+    <string name="section_analyze">संदेश का विश्लेषण करें</string>
+
+    <!-- Result Card Labels -->
+    <string name="result_empty_title">अभी कोई विश्लेषण नहीं</string>
+    <string name="result_empty_hint">ऊपर एक संदेश चिपकाएं और विश्लेषण करें पर टैप करें।\nपरिणाम ScamShield बैकएंड से आएंगे।</string>
+    <string name="loading_sending">बैकएंड को भेजा जा रहा है\u2026</string>
+    <string name="loading_awaiting">POST /analyze \u2192 localhost:8000\nScamShield प्रतिक्रिया की प्रतीक्षा हो रही है\u2026</string>
+    <string name="error_backend_title">बैकएंड अनुपलब्ध</string>
+    <string name="error_backend_hint">बैकएंड इस प्रकार शुरू करें:</string>
+    <string name="result_why_flagged">\u2139\uFE0F  इसे क्यों फ्लैग किया गया</string>
+    <string name="result_signals_label">संकेत:</string>
+    <string name="result_recommended_action">अनुशंसित कार्रवाई</string>
+    <string name="result_risk_score">जोखिम स्कोर</string>
+
+    <!-- Risk Categories -->
+    <string name="risk_safe">सुरक्षित</string>
+    <string name="risk_suspicious">संदिग्ध</string>
+    <string name="risk_high_risk">उच्च जोखिम</string>
+
+    <!-- Recommendations -->
+    <string name="rec_stop">संलग्न न हों। प्रेषक को ब्लॉक करें और इसे तुरंत फ़िशिंग के रूप में रिपोर्ट करें।</string>
+    <string name="rec_verify">सावधानी से आगे बढ़ें। कार्रवाई करने से पहले किसी आधिकारिक चैनल के माध्यम से प्रेषक की पुष्टि करें।</string>
+    <string name="rec_proceed">यह संदेश सुरक्षित प्रतीत होता है। अप्रत्याशित अनुरोधों के प्रति सतर्क रहें।</string>
+
+    <!-- Detection Reasons -->
+    <string name="reason_urgent_language">संदेश में तात्कालिकता पैदा की गई है और जल्दी से कार्य करने का दबाव डाला गया है।</string>
+    <string name="reason_account_threat">संदेश में खाता ब्लॉक या निलंबन की धमकी दी गई है।</string>
+    <string name="reason_kyc_pressure">संदेश में KYC पूरा करने या अपडेट करने का दबाव डाला गया है।</string>
+    <string name="reason_impersonation">संदेश किसी अधिकारी, बैंक या आधिकारिक सेवा का प्रतिरूपण करता प्रतीत होता है।</string>
+    <string name="reason_credential_request">संदेश में OTP, PIN या कार्ड विवरण जैसी संवेदनशील जानकारी मांगी गई है।</string>
+    <string name="reason_payment_pressure">संदेश में भुगतान करने या पैसे ट्रांसफर करने का दबाव डाला गया है।</string>
+    <string name="reason_suspicious_intent">संदेश किसी वित्तीय कार्रवाई को सत्यापन, अनलॉकिंग, रिफंड या पुरस्कार से जोड़ता है।</string>
+    <string name="reason_lottery_prize">संदेश में पुरस्कार या लॉटरी से संबंधित भाषा का उपयोग किया गया है जो आमतौर पर घोटालों से जुड़ी होती है।</string>
+    <string name="reason_refund_reward">संदेश में कार्रवाई को प्रोत्साहित करने के लिए रिफंड, कैशबैक या इनाम का दावा किया गया है।</string>
+
+    <!-- Signal Chip Labels -->
+    <string name="signal_urgent_language">तात्कालिक भाषा</string>
+    <string name="signal_account_threat">खाता खतरा</string>
+    <string name="signal_kyc_pressure">KYC दबाव</string>
+    <string name="signal_impersonation">प्रतिरूपण</string>
+    <string name="signal_credential_request">क्रेडेंशियल अनुरोध</string>
+    <string name="signal_payment_pressure">भुगतान दबाव</string>
+    <string name="signal_suspicious_intent">संदिग्ध इरादा</string>
+    <string name="signal_lottery_prize">लॉटरी / पुरस्कार</string>
+    <string name="signal_refund_reward">रिफंड / इनाम</string>
+</resources>

@@ -1,0 +1,112 @@
+<resources>
+    <string name="app_name">ScamShield</string>
+
+    <!-- Main Dashboard -->
+    <string name="status_title">Demo Protection Active</string>
+    <string name="status_subtitle">All systems monitoring normally.</string>
+    <string name="input_hint">Enter suspicious message...</string>
+    <string name="btn_analyze">Analyze Message</string>
+    <string name="btn_analyze_empty">Enter a message above</string>
+
+    <!-- Samples -->
+    <string name="sample_label">Try a sample:</string>
+    <string name="sample_safe">Safe</string>
+    <string name="sample_suspicious">Suspicious</string>
+    <string name="sample_high_risk">High Risk</string>
+    
+    <string name="sample_text_safe">Are you coming to dinner tonight?</string>
+    <string name="sample_text_suspicious">Your account has been temporarily restricted. Please update your details immediately at http://verify-secure-login.com</string>
+    <string name="sample_text_high_risk">URGENT: Your bank account is locked due to unusual activity. Call 1-800-FAKE-BANK immediately to restore access.</string>
+
+    <!-- Results -->
+    <string name="results_title">Analysis Results</string>
+    <string name="results_risk_level">Risk Level</string>
+    <string name="results_score">Score</string>
+    <string name="results_reasons">Reasons</string>
+    <string name="results_recommendation">Recommendation</string>
+    <string name="results_analyzing">Analyzing...</string>
+
+    <!-- Legend -->
+    <string name="legend_safe">0  Safe</string>
+    <string name="legend_suspicious">30  Suspicious</string>
+    <string name="legend_high_risk">60  High Risk</string>
+
+    <!-- Auto SMS Protection Section -->
+    <string name="sms_section_title">Auto SMS Protection</string>
+    <string name="sms_section_subtitle">Watches SMS notifications for scam patterns</string>
+    <string name="sms_disclaimer">LOCAL PROTOTYPE — Not eligible for Google Play Store distribution. Requires user-granted Notification Access. No RECEIVE_SMS permission used.</string>
+    <string name="sms_info_scope">When enabled, ScamShield monitors notifications from your default SMS app only. WhatsApp, Telegram and other apps are never scanned.</string>
+    <string name="sms_info_privacy">Only the short preview visible in your notification bar is sent to the ScamShield backend running on your own computer. No message content, phone numbers, or OTPs are stored on device.</string>
+    <string name="sms_perm_listener">Notification Access</string>
+    <string name="sms_perm_post">Post Notifications (warnings)</string>
+    <string name="sms_perm_granted">Granted</string>
+    <string name="sms_perm_not_granted">Not granted</string>
+    <string name="sms_btn_settings">Open Notification Access Settings</string>
+    <string name="sms_settings_hint">Tap the button above, find ScamShield in the list, and enable it. Then come back to this screen.</string>
+    <string name="sms_disabled_msg">Toggle is OFF — no SMS notifications will be analysed.</string>
+
+    <!-- Permission Dialog -->
+    <string name="perm_dialog_title">Enable Notifications</string>
+    <string name="perm_dialog_desc">ScamShield needs permission to show warning alerts when a scam SMS is detected.</string>
+    <string name="perm_dialog_not_now">Not Now</string>
+    <string name="perm_dialog_allow">Allow</string>
+
+    <!-- Notifications -->
+    <string name="notif_title_high_risk">ScamShield: HIGH RISK detected</string>
+    <string name="notif_title_suspicious">ScamShield: SUSPICIOUS message</string>
+    <string name="notif_reason">Reason: %1$s</string>
+    <string name="notif_score">Score: %1$d</string>
+    
+    <string name="no_reason_provided">No reason provided.</string>
+
+    <string name="app_subtitle">AI-Powered Scam Detection</string>
+    <string name="status_active">Protection Active</string>
+    <string name="status_connected">Connected to ScamShield backend • port 8000</string>
+    <string name="section_recent_scans">RECENT SCANS</string>
+    <string name="section_auto_protection">AUTOMATIC PROTECTION</string>
+    <string name="section_analyze">ANALYZE A MESSAGE</string>
+
+    <!-- Result Card Labels -->
+    <string name="result_empty_title">No Analysis Yet</string>
+    <string name="result_empty_hint">Paste a message above and tap Analyze Message.\nResults will come from the ScamShield backend.</string>
+    <string name="loading_sending">Sending to backend\u2026</string>
+    <string name="loading_awaiting">POST /analyze \u2192 localhost:8000\nAwaiting ScamShield response\u2026</string>
+    <string name="error_backend_title">Backend Unavailable</string>
+    <string name="error_backend_hint">Start the backend with:</string>
+    <string name="result_why_flagged">\u2139\uFE0F  Why this was flagged</string>
+    <string name="result_signals_label">Signals:</string>
+    <string name="result_recommended_action">Recommended Action</string>
+    <string name="result_risk_score">Risk Score</string>
+
+    <!-- Risk Categories -->
+    <string name="risk_safe">SAFE</string>
+    <string name="risk_suspicious">SUSPICIOUS</string>
+    <string name="risk_high_risk">HIGH RISK</string>
+
+    <!-- Recommendations -->
+    <string name="rec_stop">Do NOT engage. Block the sender and report this as phishing immediately.</string>
+    <string name="rec_verify">Proceed with caution. Verify the sender through an official channel before taking action.</string>
+    <string name="rec_proceed">This message appears safe. Stay alert to unexpected requests.</string>
+
+    <!-- Detection Reasons (mapped from backend SIGNAL_REASONS) -->
+    <string name="reason_urgent_language">The message creates urgency and pressures you to act quickly.</string>
+    <string name="reason_account_threat">The message threatens account blocking or suspension.</string>
+    <string name="reason_kyc_pressure">The message pressures you to complete or update KYC.</string>
+    <string name="reason_impersonation">The message appears to impersonate an authority, bank or official service.</string>
+    <string name="reason_credential_request">The message asks for sensitive credentials such as OTP, PIN or card details.</string>
+    <string name="reason_payment_pressure">The message pressures you to make a payment or transfer money.</string>
+    <string name="reason_suspicious_intent">The message links a financial action to verification, unlocking, refund or reward.</string>
+    <string name="reason_lottery_prize">The message uses prize or lottery language commonly associated with scams.</string>
+    <string name="reason_refund_reward">The message uses refund, cashback or reward claims to encourage action.</string>
+
+    <!-- Signal Chip Labels -->
+    <string name="signal_urgent_language">Urgent Language</string>
+    <string name="signal_account_threat">Account Threat</string>
+    <string name="signal_kyc_pressure">KYC Pressure</string>
+    <string name="signal_impersonation">Impersonation</string>
+    <string name="signal_credential_request">Credential Request</string>
+    <string name="signal_payment_pressure">Payment Pressure</string>
+    <string name="signal_suspicious_intent">Suspicious Intent</string>
+    <string name="signal_lottery_prize">Lottery / Prize</string>
+    <string name="signal_refund_reward">Refund / Reward</string>
+</resources>
