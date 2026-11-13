@@ -1,159 +1,128 @@
-# ScamShield 🛡️
+# ScamShield
 
-ScamShield is an Android application designed to help users identify potentially fraudulent SMS messages. It analyzes message content and provides a risk assessment to help users recognize suspicious messages.
+ScamShield is an Android application designed to help users identify potentially fraudulent messages. It analyzes message content and provides risk assessments to help users recognize suspicious activity.
 
 ## Features
 
-* Analyze SMS messages for potential scam indicators.
-* Display a risk assessment and relevant warnings.
-* Use rule-based detection and, when configured and available, AI-assisted analysis.
-* Provide a user interface with English, Hindi, and Kannada language options.
-* Connect an Android frontend to a Python backend for message analysis.
-
-*Note: The features and language support described here should be verified against the current implementation.*
+- Analyze messages for potential scam indicators.
+- Display risk levels, scores, recommendations, and explanations.
+- Rule-based scam detection.
+- English, Hindi, and Kannada language support.
+- Android frontend connected to a Python FastAPI backend.
+- Backend OCR endpoint for extracting text from images.
 
 ## How It Works
 
-The project uses a frontend and backend that run separately during development.
-
-1. **Android frontend:** The user interacts with the ScamShield application.
-2. **Backend request:** The app sends the message for analysis to the Python backend.
-3. **Rule-based detection:** The backend checks for suspicious patterns and indicators.
-4. **AI-assisted analysis:** The backend can use the Groq API when configured and available.
-5. **Result:** The app displays the analysis returned by the backend.
-
-If AI analysis fails, the backend may use its rule-based fallback. The result is an assessment, not a guarantee that a message is safe or fraudulent.
+1. **Message Input:** The user provides a message for analysis.
+2. **Backend Request:** The Android application sends the message to the Python backend.
+3. **Risk Analysis:** The backend evaluates suspicious patterns and indicators.
+4. **Risk Assessment:** The application displays the risk level, score, recommendation, and explanation.
 
 ## Technology Stack
 
-* **Frontend:** Android, Kotlin, and Jetpack Compose (verify against the project files).
-* **Backend:** Python and FastAPI.
-* **AI service:** Groq API, when configured.
-* **Development tools:** Android Studio and Python.
+- **Frontend:** Android, Kotlin, Jetpack Compose.
+- **Backend:** Python, FastAPI.
+- **OCR:** Tesseract OCR, pytesseract, Pillow.
+- **Development Tools:** Android Studio, Python.
 
 ## Project Setup
 
 ### Prerequisites
 
-* Android Studio and a compatible Android SDK.
-* Python installed on your computer.
-* The ScamShield Android project.
-* The backend project and its required Python dependencies.
-* A Groq API key if AI-assisted analysis requires one.
+- Android Studio and a compatible Android SDK.
+- Python installed on your computer.
+- Git and this repository.
 
 ### 1. Start the Backend
 
-Open a terminal and navigate to the backend project directory.
-
-For the current local development setup:
+Open a terminal at the repository root and install dependencies:
 
 ```powershell
-cd D:\Hacktopia
-python -m uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000
+python -m pip install -r backend\requirements.txt
 ```
 
-Keep this terminal running while testing the Android application.
+Start the backend:
 
-To check whether the API documentation is available, open:
+```powershell
+python -m uvicorn backend.main:app --host 0.0.0.0 --port 8000
+```
+
+Keep this terminal running.
+
+To verify that the backend is working, open:
 
 `http://127.0.0.1:8000/docs`
 
-### 2. Run the Android Frontend
+### 2. Run the Android Application
 
-1. Open the `ScamSheildapp` project in Android Studio.
-2. Wait for Gradle sync to finish.
-3. Select an Android emulator or connect a physical Android phone.
-4. Click **Run ▶** to build and launch the app.
-5. Keep the backend terminal running while testing features that require server analysis.
+1. Open `apps\ScamShield` in Android Studio.
+2. Wait for Gradle sync to complete.
+3. Start an Android emulator or connect a physical device.
+4. Click **Run** to build and launch the application.
 
-### 3. Connect the Frontend to the Backend
+### 3. Connect Android to the Backend
 
-The Android app must use a URL that can reach the backend.
+For an Android emulator, open another terminal and run:
 
-* **Android emulator:** `10.0.2.2` commonly maps to the development computer's localhost.
-* **Physical Android phone:** Use the computer's local network IP address, for example `http://192.168.1.10:8000`, replacing the example IP with the actual address.
-* For a physical phone, the computer and phone generally need to be on the same Wi-Fi network.
-* Ensure the computer's firewall permits the required connection.
+```powershell
+adb reverse tcp:8000 tcp:8000
+```
 
-The URL shown above is an example. Configure the actual backend URL in the app's existing network configuration.
+The application uses:
 
-### 4. Configure AI Access
+`http://localhost:8000`
 
-If the backend uses Groq, configure the API key using the method supported by the backend configuration. Keep secrets in environment variables or another appropriate secret-management mechanism.
+ADB reverse forwards this connection to the backend running on your computer.
 
-**Never commit API keys, passwords, or private credentials to GitHub.**
+Repeat the ADB reverse command if the emulator or ADB connection restarts.
+
+For physical Android devices, configure the backend URL to use your computer's LAN IP address and ensure both devices are on the same network.
+
+**Note:** The current HTTP configuration is intended for local development. A deployed application should use HTTPS.
+
+### 4. OCR Setup (Optional)
+
+The backend provides an image-analysis endpoint at:
+
+`POST /analyze/image`
+
+To use OCR, install Tesseract OCR on your computer in addition to the Python dependencies.
+
+The Android screen currently supports text-based analysis; image upload is available through the backend endpoint.
 
 ## Testing
 
-Test the application with harmless example messages, such as:
+You can test the application using harmless example messages:
 
-* "Congratulations! You have won a prize. Click this example link to claim it."
-* "Your account needs verification. Please check through the official application."
-* "Your appointment is confirmed for tomorrow."
+- "Congratulations! You have won a prize. Click this example link to claim it."
+- "Your account needs verification. Please check through the official application."
+- "Your appointment is confirmed for tomorrow."
 
-These are illustrative examples only. Actual classifications depend on the implemented detection rules, AI availability, and message content.
+These are illustrative examples. Actual classifications depend on the implemented detection rules and message content.
 
 ## Troubleshooting
 
-### Backend unavailable
+### Backend Unavailable
 
-* Confirm the backend terminal is still running.
-* Check that the backend URL configured in the Android app is correct.
-* For a physical phone, use the computer's LAN IP instead of `localhost` or `10.0.2.2`.
-* Check the Wi-Fi connection and firewall settings.
+- Ensure the FastAPI backend is running.
+- Check that port 8000 is available.
+- Verify the backend URL configured in the Android application.
+- Run `adb reverse tcp:8000 tcp:8000` for emulator connectivity.
 
-### AI analysis fails
+### Android Build Failure
 
-* Verify that the required API key is configured.
-* Check the backend terminal for errors.
-* Confirm that the backend's rule-based fallback is working as expected.
-
-### Android build fails
-
-* Wait for Gradle sync to complete.
-* Check the error details in Android Studio.
-* Verify that the installed Android SDK and required dependencies are available.
+- Wait for Gradle sync to complete.
+- Check the build output in Android Studio.
+- Verify that the required Android SDK components are installed.
 
 ## Limitations and Privacy
 
-ScamShield cannot guarantee that every scam will be detected or that every message classified as safe is trustworthy. Verify suspicious requests through official channels, and never share OTPs, passwords, or banking credentials in response to unexpected messages.
+ScamShield cannot guarantee that every scam will be detected or that every message classified as safe is trustworthy.
 
-Review the actual backend implementation to determine what message data is transmitted, processed, or logged. Do not assume messages remain on the device if they are sent to a backend service.
+Always verify suspicious requests through official channels. Never share OTPs, passwords, or banking credentials in response to unexpected messages.
 
-## Development Workflow
-
-Check the current changes:
-
-```bash
-git status
-```
-
-Stage the intended changes:
-
-```bash
-git add README.md
-```
-
-Review staged changes:
-
-```bash
-git diff --cached
-```
-
-Commit the README:
-
-```bash
-git commit -m "Add ScamShield project README"
-```
-
-Push the commit to the configured remote when ready:
-
-```bash
-git push
-```
-
-Check the configured remote and branch before pushing if the repository setup is uncertain.
+Message analysis involves sending message content to the configured backend. Review the backend implementation and deployment configuration to understand how data is processed and logged.
 
 ## Project Status
 
-ScamShield is an ongoing student project. Setup instructions and feature descriptions should be updated as the implementation evolves.
+ScamShield is an ongoing student project. Features and setup instructions may evolve as development continues.

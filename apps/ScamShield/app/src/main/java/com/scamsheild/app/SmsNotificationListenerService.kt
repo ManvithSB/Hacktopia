@@ -49,7 +49,7 @@ import java.net.URL
  * Privacy design:
  *  - Only the notification PREVIEW (the short tickerText / bigText snippet
  *    shown in the status bar) is sent to the backend — not the full SMS body.
- *  - The preview is sent over the loopback network (10.0.2.2) to a local
+ *  - The preview is sent over the emulator loopback (adb reverse) to a local
  *    FastAPI server on the developer's own machine. No third-party cloud.
  *  - The preview text is not persisted locally.
  */
@@ -58,8 +58,8 @@ class SmsNotificationListenerService : NotificationListenerService() {
     // ── Constants ─────────────────────────────────────────────────────────────
 
     companion object {
-        /** URL of the existing FastAPI backend (emulator loopback). */
-        private const val BACKEND_URL = "http://10.149.198.250:8000/analyze"
+        /** URL of the FastAPI backend, reached through adb reverse. */
+        private const val BACKEND_URL = "http://localhost:8000/analyze"
         private const val CONNECT_TIMEOUT  = 5_000
         private const val READ_TIMEOUT     = 15_000
 

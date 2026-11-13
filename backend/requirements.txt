@@ -5,6 +5,8 @@
 # See: https://github.com/UB-Mannheim/tesseract/wiki
 
 fastapi
+uvicorn
+python-multipart
 pydantic
 httpx
 Pillow

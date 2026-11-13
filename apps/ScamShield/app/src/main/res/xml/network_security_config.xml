@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
   network_security_config.xml
-  Allows plain HTTP to 10.0.2.2 (Android emulator loopback to host machine).
+  Allows plain HTTP to the emulator loopback backend endpoints.
   This is a DEVELOPMENT-ONLY configuration. HTTPS must be used in production.
 -->
 <network-security-config>
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="false">10.0.2.2</domain>
+        <domain includeSubdomains="false">localhost</domain>
     </domain-config>
 </network-security-config>

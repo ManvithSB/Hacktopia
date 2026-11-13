@@ -4,8 +4,8 @@ package com.scamsheild.app
 // ScamShield Dashboard — v4 (Backend Integration + Auto SMS Protection)
 //
 // HTTP transport: java.net.HttpURLConnection (no new Gradle dependencies).
-// Endpoint:       POST http://10.0.2.2:8000/analyze
-//                 10.0.2.2 = Android emulator alias for host loopback.
+// Endpoint:       POST http://localhost:8000/analyze
+//                 adb reverse forwards emulator loopback to the host backend.
 // Request body:   {"message":"...","language":"en"}
 // Response:       {"risk_level","score","reasons","recommendation","signals",...}
 //
@@ -116,11 +116,8 @@ import java.util.Locale
 // BACKEND CONFIGURATION
 // ═════════════════════════════════════════════════════════════════════════════
 
-/**
- * 10.0.2.2 is the Android emulator's special alias for the host machine's
- * loopback address (127.0.0.1).  The FastAPI server listens on port 8000.
- */
-private const val BACKEND_URL = "http://10.149.198.250:8000/analyze"
+/** adb reverse maps emulator localhost:8000 to the host's FastAPI backend. */
+private const val BACKEND_URL = "http://localhost:8000/analyze"
 private const val CONNECT_TIMEOUT_MS = 5_000
 private const val READ_TIMEOUT_MS    = 15_000
 
@@ -234,7 +231,8 @@ private fun parseResponse(json: String): AnalysisResult {
         val riskLevel = when (obj.getString("risk_level").uppercase()) {
             "HIGH_RISK"  -> RiskLevel.HIGH_RISK
             "SUSPICIOUS" -> RiskLevel.SUSPICIOUS
-            else         -> RiskLevel.SAFE
+            "SAFE"       -> RiskLevel.SAFE
+            else         -> throw IllegalArgumentException("Unsupported risk level.")
         }
 
         // recommendation: "PROCEED" | "VERIFY" | "STOP"
@@ -865,13 +863,12 @@ private fun ErrorCard(message: String) {
                         style = MaterialTheme.typography.labelMedium
                     )
                     Text(
-                        text  = "cd D:\\Hacktopia",
-                        color = TealBright,
-                        style = MaterialTheme.typography.bodyMedium,
-                        fontWeight = FontWeight.Medium
+                        text  = "From the repository root, run:",
+                        color = TextSecondary,
+                        style = MaterialTheme.typography.labelMedium
                     )
                     Text(
-                        text  = "uvicorn backend.main:app --host 0.0.0.0 --port 8000 --reload",
+                        text  = "python -m uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000",
                         color = TealBright,
                         style = MaterialTheme.typography.bodyMedium,
                         fontWeight = FontWeight.Medium
@@ -1429,4 +1426,3 @@ private fun SmsPermissionStatusRow(label: String, granted: Boolean) {
         )
     }
 }
-
